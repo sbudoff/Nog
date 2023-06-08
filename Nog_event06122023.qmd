@@ -5,6 +5,34 @@ format: revealjs
 editor: visual
 ---
 
+# Fine Motor Plasticity
+
+-   Plasticity is the ability for the brain to learn new tasks
+
+# Fine Motor Plasticity
+
+-   Plasticity is the ability for the brain to learn new tasks
+
+-   Famous examples include stroke patients relearning skills after consistent physical therapy
+
+# Fine Motor Plasticity
+
+-   Plasticity is the ability for the brain to learn new tasks
+
+-   Famous examples include stroke patients relearning skills after consistent physical therapy Can we observe plasticity on Fine Motor Tasks?
+
+-   Question: Can we use the Mirror Box to observe plasticity in the healthy brain?
+
+# Fine Motor Plasticity
+
+-   Plasticity is the ability for the brain to learn new tasks
+
+-   Famous examples include stroke patients relearning skills after consistent physical therapy Can we observe plasticity on Fine Motor Tasks?
+
+-   Question: Can we use the Mirror Box to observe plasticity in the healthy brain performing a fine motor task?
+
+-   Null Hypothesis: If we can not observe plasticity with the mirror box, we should see the same average performance every time we try to draw shapes in the Mirror Box
+
 ## Mirror Box Results
 
 ```{r setup, include=FALSE}
@@ -71,13 +99,15 @@ mirror_df %>%
   ggplot(aes(x=Practice)) +
     geom_point(aes( y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
-    ggtitle("Learning Rate in Mirror Box Without Considering Shape") +
+    ggtitle("Learning Rate in Mirror Box") +
     theme_minimal() +
     theme(legend.position = 'None')
 ```
 
 ## Mirror Box Results Statistics
+
 ### Accounting for the shape being drawn
+
 ```{r stats2, echo=FALSE}
 mirror_df <- mirror_df %>%
   mutate(Shape.1 = Shape == 1,
@@ -101,6 +131,7 @@ summary(mirror_model2)
 ```
 
 ## Mirror Box Results Statistics
+
 ### Accounting for the shape being drawn
 
 Time = `r beta_mirror_1`\*Position + `r intercept_mirror` + Shape
@@ -111,13 +142,14 @@ mirror_df %>%
   ggplot(aes(x=Practice, group=Shape, color = Shape)) +
     geom_point(aes(y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
-    ggtitle("Learning Rate in Mirror Box Without Considering Shape") +
+    ggtitle("Learning Rate in Mirror Box Considering Shape") +
     theme_minimal() +
     theme(legend.position = 'None') +
     facet_wrap(~Shape)
 ```
 
 ## Mirror Box Results Statistics
+
 ### Accounting for the shape being drawn
 
 Time = `r beta_mirror_1`\*Position + `r intercept_mirror` + Shape
@@ -128,7 +160,7 @@ mirror_df %>%
   ggplot(aes(x=Practice, group=Shape, color = Shape)) +
     geom_point(aes(y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
-    ggtitle("Learning Rate in Mirror Box Without Considering Shape") +
+    ggtitle("Learning Rate in Mirror Box Considering Shape") +
     theme_minimal() +
     theme(legend.position = 'None')
 ```

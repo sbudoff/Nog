@@ -330,6 +330,40 @@
 </div>
 
 </section>
+<section id="fine-motor-plasticity" class="title-slide slide level1 center">
+<h1>Fine Motor Plasticity</h1>
+<ul>
+<li>Plasticity is the ability for the brain to learn new tasks</li>
+</ul>
+</section>
+
+<section id="fine-motor-plasticity-1" class="title-slide slide level1 center">
+<h1>Fine Motor Plasticity</h1>
+<ul>
+<li><p>Plasticity is the ability for the brain to learn new tasks</p></li>
+<li><p>Famous examples include stroke patients relearning skills after consistent physical therapy</p></li>
+</ul>
+</section>
+
+<section id="fine-motor-plasticity-2" class="title-slide slide level1 center">
+<h1>Fine Motor Plasticity</h1>
+<ul>
+<li><p>Plasticity is the ability for the brain to learn new tasks</p></li>
+<li><p>Famous examples include stroke patients relearning skills after consistent physical therapy Can we observe plasticity on Fine Motor Tasks?</p></li>
+<li><p>Question: Can we use the Mirror Box to observe plasticity in the healthy brain?</p></li>
+</ul>
+</section>
+
+<section>
+<section id="fine-motor-plasticity-3" class="title-slide slide level1 center">
+<h1>Fine Motor Plasticity</h1>
+<ul>
+<li><p>Plasticity is the ability for the brain to learn new tasks</p></li>
+<li><p>Famous examples include stroke patients relearning skills after consistent physical therapy Can we observe plasticity on Fine Motor Tasks?</p></li>
+<li><p>Question: Can we use the Mirror Box to observe plasticity in the healthy brain performing a fine motor task?</p></li>
+<li><p>Null Hypothesis: If we can not observe plasticity with the mirror box, we should see the same average performance every time we try to draw shapes in the Mirror Box</p></li>
+</ul>
+</section>
 <section id="mirror-box-results" class="slide level2">
 <h2>Mirror Box Results</h2>
 
@@ -340,7 +374,7 @@
 <img data-src="Nog_event06122023_files/figure-revealjs/graph1-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = -1.5029795*Position + 8.9626408</p>
+<p>Time = -1.223107*Position + 8.48387</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -348,25 +382,25 @@ Call:
 lm(formula = `Time (s)` ~ Practice, data = mirror_df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.37883 -0.72935 -0.04181  0.77174  2.96741 
+    Min      1Q  Median      3Q     Max 
+-2.6349 -0.7279 -0.1488  0.8848  2.3976 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   8.9626     0.3236   27.70   &lt;2e-16 ***
-Practice     -1.5030     0.1182  -12.72   &lt;2e-16 ***
+(Intercept)   8.4839     0.3299   25.72  &lt; 2e-16 ***
+Practice     -1.2231     0.1205  -10.15 6.38e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.182 on 78 degrees of freedom
-Multiple R-squared:  0.6747,    Adjusted R-squared:  0.6705 
-F-statistic: 161.8 on 1 and 78 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.205 on 78 degrees of freedom
+Multiple R-squared:  0.5693,    Adjusted R-squared:  0.5638 
+F-statistic: 103.1 on 1 and 78 DF,  p-value: 6.384e-16</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-1" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = -1.5029795*Position + 8.9626408</p>
+<p>Time = -1.223107*Position + 8.48387</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph2-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-2" class="slide level2">
@@ -375,7 +409,7 @@ F-statistic: 161.8 on 1 and 78 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell">
 
 </div>
-<p>Time = -1.5029795*Position + 9.1805758 + Shape</p>
+<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -385,39 +419,39 @@ lm(formula = `Time (s)` ~ Practice + Shape.1 + Shape.2 + Shape.3,
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--2.06609 -0.79902  0.06475  0.72538  2.64511 
+-2.54162 -0.74739  0.00654  0.79400  2.49705 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   9.1806     0.3892  23.588   &lt;2e-16 ***
-Practice     -1.5030     0.1160 -12.953   &lt;2e-16 ***
-Shape.1TRUE   0.1806     0.3669   0.492    0.624    
-Shape.2TRUE  -0.5171     0.3669  -1.409    0.163    
-Shape.3TRUE  -0.5352     0.3669  -1.459    0.149    
+(Intercept)  8.36690    0.39304  21.288  &lt; 2e-16 ***
+Practice    -1.22311    0.11718 -10.438  2.9e-16 ***
+Shape.1TRUE -0.08008    0.37056  -0.216    0.829    
+Shape.2TRUE -0.17739    0.37056  -0.479    0.634    
+Shape.3TRUE  0.72534    0.37056   1.957    0.054 .  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.16 on 75 degrees of freedom
-Multiple R-squared:  0.6984,    Adjusted R-squared:  0.6823 
-F-statistic: 43.41 on 4 and 75 DF,  p-value: &lt; 2.2e-16</code></pre>
+Residual standard error: 1.172 on 75 degrees of freedom
+Multiple R-squared:  0.6081,    Adjusted R-squared:  0.5872 
+F-statistic: 29.09 on 4 and 75 DF,  p-value: 1.323e-14</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-3" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-1">Accounting for the shape being drawn</h3>
-<p>Time = -1.5029795*Position + 9.1805758 + Shape</p>
+<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph3-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-4" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-2">Accounting for the shape being drawn</h3>
-<p>Time = -1.5029795*Position + 9.1805758 + Shape</p>
+<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph4-1.png" width="960" class="r-stretch"><div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
