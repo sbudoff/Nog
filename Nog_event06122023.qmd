@@ -1,0 +1,101 @@
+---
+title: "NOG"
+format: revealjs
+editor: visual
+---
+\fontdir[fonts/]
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+
+## Bullets
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Code
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk\$set(warning = FALSE, message = FALSE, echo = TRUE)
+```
+
+```{r init}
+library(tidyverse)
+library(extrafont)
+library(xkcd)
+library(gcookbook) 
+```
+
+
+```{r data}
+mirror_df <- data.frame('Student' = 1:20,
+                        'Shape' = 1:4,
+                        'Trial 1' = runif(20,5,10),
+                        'Trial 2' = runif(20,5,7),
+                        'Trial 3' = runif(20,2,6),
+                        'Trial 4' = runif(20,1,6))
+mirror_df <- mirror_df %>%
+  gather(key="Trial", value="Time (s)", -Student, -Shape) %>%
+  mutate(Practice = as.numeric(gsub("\\D", "", Trial)))
+
+mirror_model <- lm(`Time (s)` ~ Practice, data = mirror_df) 
+
+intercept_mirror <- mirror_model$coefficients[1]
+beta_mirror <- mirror_model$coefficients[2]
+
+summary(mirror_model)
+```
+
+```{r graph1}
+mirror_df %>%
+  ggplot(aes(x=Trial, y=`Time (s)`)) +
+    geom_violin() +
+    geom_jitter(aes(color=Shape)) +
+    ggtitle("Time to Trace Figure in Mirorr Box") +
+    theme_minimal() +
+    theme(legend.position = 'None')
+```
+
+```{r graph2}
+mirror_df %>%
+  mutate(Prediction = intercept_mirror + beta_mirror*Practice) %>%
+  ggplot(aes(x=Practice)) +
+    geom_point(aes( y=`Time (s)`)) +
+    geom_line(aes(y=Prediction)) +
+    ggtitle("Learning Rate in Mirror Box Without Considering Shape") +
+    theme_minimal() +
+    theme(legend.position = 'None')
+```
+```{r graph3}
+mirror_df <- mirror_df %>%
+  mutate(Shape.1 = Shape == 1,
+         Shape.2 = Shape == 2,
+         Shape.3 = Shape == 3)
+  
+
+mirror_model2 <- lm(`Time (s)` ~ Practice + Shape.1 + Shape.2 + Shape.3, data = mirror_df) 
+
+summary(mirror_model2)
+
+intercept_mirror <- mirror_model2$coefficients[1]
+beta_mirror_1 <- mirror_model2$coefficients[2]
+beta_mirror_2 <- mirror_model2$coefficients[3]
+beta_mirror_3 <- mirror_model2$coefficients[4]
+beta_mirror_4 <- mirror_model2$coefficients[5]
+
+mirror_df %>%
+  mutate(Prediction = intercept_mirror + beta_mirror_1*Practice + beta_mirror_2*Shape.1 + beta_mirror_3*Shape.2 + beta_mirror_4*Shape.3) %>%
+  ggplot(aes(x=Practice, group=Shape, color = Shape)) +
+    geom_point(aes(y=`Time (s)`)) +
+    geom_line(aes(y=Prediction)) +
+    ggtitle("Learning Rate in Mirror Box Without Considering Shape") +
+    theme_minimal() +
+    theme(legend.position = 'None') +
+    facet_wrap(~Shape)
+```
