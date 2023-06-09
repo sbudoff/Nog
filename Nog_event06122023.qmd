@@ -169,6 +169,14 @@ mirror_df %>%
     theme(legend.position = 'None')
 ```
 
+## Conclusion
+
+So what did we learn?
+
+Did we reject the null hypothesis (no change from trial to trial)?
+
+Did the shape we were trying to trace matter? If so, what hypothesis can you propose based on the trends we saw?
+
 # Coarse Motor Plasticity
 
 -   Question: Can we use the cornhole and dizzy goggles to observe plasticity in the healthy brain performing a coarse motor task?
@@ -236,3 +244,11 @@ ch_df %>%
     theme_minimal() +
     theme(legend.position = 'None')
 ```
+
+## Conclusion
+
+So what did we learn?
+
+Did we reject the null hypothesis (no change from trial to trial)?
+
+Comparing the fine motor task with the coarse motor task, do we think plasticity was more obvious in one case or another?
