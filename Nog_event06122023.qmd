@@ -41,27 +41,30 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, echo = TRUE)
 
 ```{r init, include=FALSE}
 library(tidyverse)
+library(googlesheets4)
+
+gs4_auth(email = "sabudoff@gmail.com")
+
+url = "https://docs.google.com/spreadsheets/d/1akxwgcooINQLVT4NIZWVJn9UD_0-_kmpf6lpOIWjmW0/edit?resourcekey#gid=1737655689"
+df <- read_sheet(url, sheet = "Form Responses 1")
 ```
 
 ```{r data, echo=FALSE}
-mirror_df <- data.frame('Student' = 1:20,
-                        'Shape' = as.character(1:4),
-                        'Trial 1' = runif(20,5,10),
-                        'Trial 2' = runif(20,5,7),
-                        'Trial 3' = runif(20,2,6),
-                        'Trial 4' = runif(20,1,6))
-mirror_df <- mirror_df %>%
-  gather(key="Trial", value="Time (s)", -Student, -Shape) %>%
-  mutate(Practice = as.numeric(gsub("\\D", "", Trial)))
+mirror_df <- df %>%
+  filter(Task == "Mirror Box") %>%
+  mutate(Attempt = `Mirror Box Attempt`,
+         Shape = as.factor(`Mirror Box Shape`),
+         `Time (s)` = `Mirror Box Time in Seconds`) %>%
+  select(`Time (s)`, Attempt, Shape)
 
-mirror_model <- lm(`Time (s)` ~ Practice, data = mirror_df) 
+mirror_model <- lm(`Time (s)` ~ Attempt, data = mirror_df) 
 
 intercept_mirror <- mirror_model$coefficients[1]
 beta_mirror <- mirror_model$coefficients[2]
 set.seed(18)
 
 mirror_df %>%
-  ggplot(aes(x=Trial, y=`Time (s)`)) +
+  ggplot(aes(x=Attempt, y=`Time (s)`)) +
     geom_jitter(aes(color=Shape)) +
     ggtitle("Time to Trace Figure in Mirorr Box") +
     theme_minimal() +
@@ -73,7 +76,8 @@ mirror_df %>%
 ```{r graph1, echo=FALSE}
 set.seed(18)
 mirror_df %>%
-  ggplot(aes(x=Trial, y=`Time (s)`)) +
+  mutate(Attempt=factor(Attempt)) %>%
+  ggplot(aes(x=Attempt, y=`Time (s)`)) +
     geom_violin() +
     geom_jitter(aes(color=Shape)) +
     ggtitle("Time to Trace Figure in Mirorr Box") +
@@ -83,7 +87,7 @@ mirror_df %>%
 
 ## Mirror Box Results Statistics
 
-Time = `r beta_mirror`\*Position + `r intercept_mirror`
+Time = `r beta_mirror`\*Attempt + `r intercept_mirror`
 
 ```{r stats1, echo=FALSE}
 summary(mirror_model)
@@ -91,12 +95,12 @@ summary(mirror_model)
 
 ## Mirror Box Results Statistics
 
-Time = `r beta_mirror`\*Position + `r intercept_mirror`
+Time = `r beta_mirror`\*Attempt + `r intercept_mirror`
 
 ```{r graph2, echo=FALSE}
 mirror_df %>%
-  mutate(Prediction = intercept_mirror + beta_mirror*Practice) %>%
-  ggplot(aes(x=Practice)) +
+  mutate(Prediction = intercept_mirror + beta_mirror*Attempt) %>%
+  ggplot(aes(x=Attempt)) +
     geom_point(aes( y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
     ggtitle("Learning Rate in Mirror Box") +
@@ -110,12 +114,12 @@ mirror_df %>%
 
 ```{r stats2, echo=FALSE}
 mirror_df <- mirror_df %>%
-  mutate(Shape.1 = Shape == 1,
-         Shape.2 = Shape == 2,
-         Shape.3 = Shape == 3)
+  mutate(Shape.1 = Shape == "Square",
+         Shape.2 = Shape == "Heart",
+         Shape.3 = Shape == "Star")
   
 
-mirror_model2 <- lm(`Time (s)` ~ Practice + Shape.1 + Shape.2 + Shape.3, data = mirror_df) 
+mirror_model2 <- lm(`Time (s)` ~ Attempt + Shape.1 + Shape.2 + Shape.3, data = mirror_df) 
 
 intercept_mirror <- mirror_model2$coefficients[1]
 beta_mirror_1 <- mirror_model2$coefficients[2]
@@ -124,7 +128,7 @@ beta_mirror_3 <- mirror_model2$coefficients[4]
 beta_mirror_4 <- mirror_model2$coefficients[5]
 ```
 
-Time = `r beta_mirror_1`\*Position + `r intercept_mirror` + Shape
+Time = `r beta_mirror_1`\*Attempt + `r intercept_mirror` + Shape
 
 ```{r stats_rez2, echo=FALSE}
 summary(mirror_model2)
@@ -134,12 +138,12 @@ summary(mirror_model2)
 
 ### Accounting for the shape being drawn
 
-Time = `r beta_mirror_1`\*Position + `r intercept_mirror` + Shape
+Time = `r beta_mirror_1`\*Attempt + `r intercept_mirror` + Shape
 
 ```{r graph3, echo=FALSE}
 mirror_df %>%
-  mutate(Prediction = intercept_mirror + beta_mirror_1*Practice + beta_mirror_2*Shape.1 + beta_mirror_3*Shape.2 + beta_mirror_4*Shape.3) %>%
-  ggplot(aes(x=Practice, group=Shape, color = Shape)) +
+  mutate(Prediction = intercept_mirror + beta_mirror_1*Attempt + beta_mirror_2*Shape.1 + beta_mirror_3*Shape.2 + beta_mirror_4*Shape.3) %>%
+  ggplot(aes(x=Attempt, group=Shape, color = Shape)) +
     geom_point(aes(y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
     ggtitle("Learning Rate in Mirror Box Considering Shape") +
@@ -152,12 +156,12 @@ mirror_df %>%
 
 ### Accounting for the shape being drawn
 
-Time = `r beta_mirror_1`\*Position + `r intercept_mirror` + Shape
+Time = `r beta_mirror_1`\*Attempt + `r intercept_mirror` + Shape
 
 ```{r graph4, echo=FALSE}
 mirror_df %>%
-  mutate(Prediction = intercept_mirror + beta_mirror_1*Practice + beta_mirror_2*Shape.1 + beta_mirror_3*Shape.2 + beta_mirror_4*Shape.3) %>%
-  ggplot(aes(x=Practice, group=Shape, color = Shape)) +
+  mutate(Prediction = intercept_mirror + beta_mirror_1*Attempt + beta_mirror_2*Shape.1 + beta_mirror_3*Shape.2 + beta_mirror_4*Shape.3) %>%
+  ggplot(aes(x=Attempt, group=Shape, color = Shape)) +
     geom_point(aes(y=`Time (s)`)) +
     geom_line(aes(y=Prediction)) +
     ggtitle("Learning Rate in Mirror Box Considering Shape") +
@@ -175,16 +179,14 @@ mirror_df %>%
 
 
 ```{r data2ch, echo=FALSE}
-ch_df <- data.frame('Student' = 1:20,
-                        'Trial 1' = runif(20,5,10),
-                        'Trial 2' = runif(20,5,7),
-                        'Trial 3' = runif(20,2,6),
-                        'Trial 4' = runif(20,1,6))
-ch_df <- ch_df %>%
-  gather(key="Trial", value="Score", -Student) %>%
-  mutate(Practice = as.numeric(gsub("\\D", "", Trial)))
+ch_df <- df %>%
+  filter(Task == "Cornhole") %>%
+  mutate(Trial = `Cornhole Attempt`,
+         Score = `Beanbag Scores`) %>%
+  select(Score, Trial)
 
-ch_model <- lm(Score ~ Practice, data = ch_df) 
+
+ch_model <- lm(Score ~ Trial, data = ch_df) 
 
 intercept_ch <- ch_model$coefficients[1]
 beta_ch <- ch_model$coefficients[2]
@@ -203,6 +205,7 @@ ch_df %>%
 ```{r graph1ch, echo=FALSE}
 set.seed(18)
 ch_df %>%
+  mutate(Trial = as.factor(Trial)) %>%
   ggplot(aes(x=Trial, y=Score)) +
     geom_violin() +
     geom_jitter() +
@@ -213,7 +216,7 @@ ch_df %>%
 
 ## Cornhole Results Statistics
 
-Score = `r beta_ch`\*Practice + `r intercept_ch`
+Score = `r beta_ch`\*Trial + `r intercept_ch`
 
 ```{r stats1ch, echo=FALSE}
 summary(ch_model)
@@ -221,12 +224,12 @@ summary(ch_model)
 
 ## Cornhole Results Statistics
 
-Score = `r beta_ch`\*Practice + `r intercept_ch`
+Score = `r beta_ch`\*Trial + `r intercept_ch`
 
 ```{r graph2ch, echo=FALSE}
 ch_df %>%
-  mutate(Prediction = intercept_ch + beta_ch*Practice) %>%
-  ggplot(aes(x=Practice)) +
+  mutate(Prediction = intercept_ch + beta_ch*Trial) %>%
+  ggplot(aes(x=Trial)) +
     geom_point(aes( y=Score)) +
     geom_line(aes(y=Prediction)) +
     ggtitle("Cornhole Learning Rate") +
