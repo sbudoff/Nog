@@ -164,3 +164,72 @@ mirror_df %>%
     theme_minimal() +
     theme(legend.position = 'None')
 ```
+
+# Coarse Motor Plasticity
+
+-   Question: Can we use the cornhole and dizzy goggles to observe plasticity in the healthy brain performing a coarse motor task?
+
+-   Null Hypothesis: If we can not observe plasticity with the dizzy goggles, we should see the same average score every time we try to get the beanbags in
+
+## Cornhole Results
+
+
+```{r data2ch, echo=FALSE}
+ch_df <- data.frame('Student' = 1:20,
+                        'Trial 1' = runif(20,5,10),
+                        'Trial 2' = runif(20,5,7),
+                        'Trial 3' = runif(20,2,6),
+                        'Trial 4' = runif(20,1,6))
+ch_df <- ch_df %>%
+  gather(key="Trial", value="Score", -Student) %>%
+  mutate(Practice = as.numeric(gsub("\\D", "", Trial)))
+
+ch_model <- lm(Score ~ Practice, data = ch_df) 
+
+intercept_ch <- ch_model$coefficients[1]
+beta_ch <- ch_model$coefficients[2]
+set.seed(18)
+
+ch_df %>%
+  ggplot(aes(x=Trial, y=Score)) +
+    geom_jitter() +
+    ggtitle("Score as a function of attempts") +
+    theme_minimal() +
+    theme(legend.position = 'None')
+```
+
+## Cornhole Result Distributions
+
+```{r graph1ch, echo=FALSE}
+set.seed(18)
+ch_df %>%
+  ggplot(aes(x=Trial, y=Score)) +
+    geom_violin() +
+    geom_jitter() +
+    ggtitle("Distribution of scores as a function of attempts") +
+    theme_minimal() +
+    theme(legend.position = 'None')
+```
+
+## Cornhole Results Statistics
+
+Score = `r beta_ch`\*Practice + `r intercept_ch`
+
+```{r stats1ch, echo=FALSE}
+summary(ch_model)
+```
+
+## Cornhole Results Statistics
+
+Score = `r beta_ch`\*Practice + `r intercept_ch`
+
+```{r graph2ch, echo=FALSE}
+ch_df %>%
+  mutate(Prediction = intercept_ch + beta_ch*Practice) %>%
+  ggplot(aes(x=Practice)) +
+    geom_point(aes( y=Score)) +
+    geom_line(aes(y=Prediction)) +
+    ggtitle("Cornhole Learning Rate") +
+    theme_minimal() +
+    theme(legend.position = 'None')
+```

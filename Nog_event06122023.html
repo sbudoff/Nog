@@ -374,7 +374,7 @@
 <img data-src="Nog_event06122023_files/figure-revealjs/graph1-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = -1.223107*Position + 8.48387</p>
+<p>Time = -1.4154428*Position + 8.6695714</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -383,24 +383,24 @@ lm(formula = `Time (s)` ~ Practice, data = mirror_df)
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.6349 -0.7279 -0.1488  0.8848  2.3976 
+-2.2853 -0.8056 -0.2042  0.6443  2.7885 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)   8.4839     0.3299   25.72  &lt; 2e-16 ***
-Practice     -1.2231     0.1205  -10.15 6.38e-16 ***
+(Intercept)   8.6696     0.3326   26.07   &lt;2e-16 ***
+Practice     -1.4154     0.1215  -11.65   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.205 on 78 degrees of freedom
-Multiple R-squared:  0.5693,    Adjusted R-squared:  0.5638 
-F-statistic: 103.1 on 1 and 78 DF,  p-value: 6.384e-16</code></pre>
+Residual standard error: 1.215 on 78 degrees of freedom
+Multiple R-squared:  0.6352,    Adjusted R-squared:  0.6305 
+F-statistic: 135.8 on 1 and 78 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-1" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = -1.223107*Position + 8.48387</p>
+<p>Time = -1.4154428*Position + 8.6695714</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph2-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-2" class="slide level2">
@@ -409,7 +409,7 @@ F-statistic: 103.1 on 1 and 78 DF,  p-value: 6.384e-16</code></pre>
 <div class="cell">
 
 </div>
-<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
+<p>Time = -1.4154428*Position + 8.4245342 + Shape</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -418,37 +418,84 @@ lm(formula = `Time (s)` ~ Practice + Shape.1 + Shape.2 + Shape.3,
     data = mirror_df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.54162 -0.74739  0.00654  0.79400  2.49705 
+    Min      1Q  Median      3Q     Max 
+-2.1860 -0.7640 -0.1892  0.5866  2.8878 
 
 Coefficients:
             Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  8.36690    0.39304  21.288  &lt; 2e-16 ***
-Practice    -1.22311    0.11718 -10.438  2.9e-16 ***
-Shape.1TRUE -0.08008    0.37056  -0.216    0.829    
-Shape.2TRUE -0.17739    0.37056  -0.479    0.634    
-Shape.3TRUE  0.72534    0.37056   1.957    0.054 .  
+(Intercept)   8.4245     0.4102  20.535   &lt;2e-16 ***
+Practice     -1.4154     0.1223 -11.572   &lt;2e-16 ***
+Shape.1TRUE   0.1457     0.3868   0.377    0.707    
+Shape.2TRUE   0.4989     0.3868   1.290    0.201    
+Shape.3TRUE   0.3355     0.3868   0.867    0.389    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.172 on 75 degrees of freedom
-Multiple R-squared:  0.6081,    Adjusted R-squared:  0.5872 
-F-statistic: 29.09 on 4 and 75 DF,  p-value: 1.323e-14</code></pre>
+Residual standard error: 1.223 on 75 degrees of freedom
+Multiple R-squared:  0.6443,    Adjusted R-squared:  0.6253 
+F-statistic: 33.96 on 4 and 75 DF,  p-value: 3.702e-16</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-3" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-1">Accounting for the shape being drawn</h3>
-<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
+<p>Time = -1.4154428*Position + 8.4245342 + Shape</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph3-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-4" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-2">Accounting for the shape being drawn</h3>
-<p>Time = -1.223107*Position + 8.3669043 + Shape</p>
+<p>Time = -1.4154428*Position + 8.4245342 + Shape</p>
 
-<img data-src="Nog_event06122023_files/figure-revealjs/graph4-1.png" width="960" class="r-stretch"><div class="footer footer-default">
+<img data-src="Nog_event06122023_files/figure-revealjs/graph4-1.png" width="960" class="r-stretch"></section></section>
+<section>
+<section id="coarse-motor-plasticity" class="title-slide slide level1 center">
+<h1>Coarse Motor Plasticity</h1>
+<ul>
+<li><p>Question: Can we use the cornhole and dizzy goggles to observe plasticity in the healthy brain performing a coarse motor task?</p></li>
+<li><p>Null Hypothesis: If we can not observe plasticity with the dizzy goggles, we should see the same average score every time we try to get the beanbags in</p></li>
+</ul>
+</section>
+<section id="cornhole-results" class="slide level2">
+<h2>Cornhole Results</h2>
+
+<img data-src="Nog_event06122023_files/figure-revealjs/data2ch-1.png" width="960" class="r-stretch"></section>
+<section id="cornhole-result-distributions" class="slide level2">
+<h2>Cornhole Result Distributions</h2>
+
+<img data-src="Nog_event06122023_files/figure-revealjs/graph1ch-1.png" width="960" class="r-stretch"></section>
+<section id="cornhole-results-statistics" class="slide level2">
+<h2>Cornhole Results Statistics</h2>
+<p>Score = -1.1333381*Practice + 7.9146708</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Score ~ Practice, data = ch_df)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.4124 -1.2198  0.1012  0.9600  3.1791 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   7.9147     0.3836   20.63  &lt; 2e-16 ***
+Practice     -1.1333     0.1401   -8.09 6.29e-12 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1.401 on 78 degrees of freedom
+Multiple R-squared:  0.4563,    Adjusted R-squared:  0.4493 
+F-statistic: 65.45 on 1 and 78 DF,  p-value: 6.289e-12</code></pre>
+</div>
+</div>
+</section>
+<section id="cornhole-results-statistics-1" class="slide level2">
+<h2>Cornhole Results Statistics</h2>
+<p>Score = -1.1333381*Practice + 7.9146708</p>
+
+<img data-src="Nog_event06122023_files/figure-revealjs/graph2ch-1.png" width="960" class="r-stretch"><div class="footer footer-default">
 
 </div>
 </section></section>
