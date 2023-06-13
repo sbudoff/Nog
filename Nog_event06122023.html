@@ -374,7 +374,7 @@
 <img data-src="Nog_event06122023_files/figure-revealjs/graph1-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = 0.3804545*Attempt + 1.9777273</p>
+<p>Time = -2.0945122*Attempt + 29.4064024</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -382,25 +382,25 @@ Call:
 lm(formula = `Time (s)` ~ Attempt, data = mirror_df)
 
 Residuals:
-     Min       1Q   Median       3Q      Max 
--2.29955 -1.29352  0.07114  1.33636  1.88091 
+    Min      1Q  Median      3Q     Max 
+-21.312 -12.241  -6.812   6.438  73.783 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)   1.9777     0.8456   2.339   0.0326 *
-Attempt       0.3805     0.3010   1.264   0.2244  
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   29.406      4.084   7.201 9.64e-10 ***
+Attempt       -2.095      1.479  -1.416    0.162    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.488 on 16 degrees of freedom
-Multiple R-squared:  0.09076,   Adjusted R-squared:  0.03393 
-F-statistic: 1.597 on 1 and 16 DF,  p-value: 0.2244</code></pre>
+Residual standard error: 18.94 on 62 degrees of freedom
+Multiple R-squared:  0.03134,   Adjusted R-squared:  0.01572 
+F-statistic: 2.006 on 1 and 62 DF,  p-value: 0.1617</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-1" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
-<p>Time = 0.3804545*Attempt + 1.9777273</p>
+<p>Time = -2.0945122*Attempt + 29.4064024</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph2-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-2" class="slide level2">
@@ -409,7 +409,7 @@ F-statistic: 1.597 on 1 and 16 DF,  p-value: 0.2244</code></pre>
 <div class="cell">
 
 </div>
-<p>Time = 0.249635*Attempt + 1.5007299 + Shape</p>
+<p>Time = -2.6745783*Attempt + 33.6457027 + Shape</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -419,34 +419,34 @@ lm(formula = `Time (s)` ~ Attempt + Shape.1 + Shape.2 + Shape.3,
 
 Residuals:
     Min      1Q  Median      3Q     Max 
--2.1912 -0.4078  0.1164  0.2496  1.8584 
+-21.297 -12.831  -5.329   7.665  70.703 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)  
-(Intercept)   1.5007     0.8901   1.686   0.1156  
-Attempt       0.2496     0.2612   0.956   0.3567  
-Shape.1TRUE   0.8920     0.9090   0.981   0.3444  
-Shape.2TRUE   1.8836     0.8996   2.094   0.0564 .
-Shape.3TRUE  -0.6832     1.0228  -0.668   0.5158  
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   33.646      6.372   5.280 1.95e-06 ***
+Attempt       -2.675      1.550  -1.726   0.0896 .  
+Shape.1TRUE    3.806      7.473   0.509   0.6125    
+Shape.2TRUE   -8.630      6.271  -1.376   0.1739    
+Shape.3TRUE   -2.974      6.858  -0.434   0.6661    
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 1.248 on 13 degrees of freedom
-Multiple R-squared:  0.4805,    Adjusted R-squared:  0.3207 
-F-statistic: 3.006 on 4 and 13 DF,  p-value: 0.05841</code></pre>
+Residual standard error: 18.87 on 59 degrees of freedom
+Multiple R-squared:  0.08515,   Adjusted R-squared:  0.02313 
+F-statistic: 1.373 on 4 and 59 DF,  p-value: 0.2543</code></pre>
 </div>
 </div>
 </section>
 <section id="mirror-box-results-statistics-3" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-1">Accounting for the shape being drawn</h3>
-<p>Time = 0.249635*Attempt + 1.5007299 + Shape</p>
+<p>Time = -2.6745783*Attempt + 33.6457027 + Shape</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph3-1.png" width="960" class="r-stretch"></section>
 <section id="mirror-box-results-statistics-4" class="slide level2">
 <h2>Mirror Box Results Statistics</h2>
 <h3 id="accounting-for-the-shape-being-drawn-2">Accounting for the shape being drawn</h3>
-<p>Time = 0.249635*Attempt + 1.5007299 + Shape</p>
+<p>Time = -2.6745783*Attempt + 33.6457027 + Shape</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph4-1.png" width="960" class="r-stretch"></section>
 <section id="conclusion" class="slide level2">
@@ -473,7 +473,7 @@ F-statistic: 3.006 on 4 and 13 DF,  p-value: 0.05841</code></pre>
 <img data-src="Nog_event06122023_files/figure-revealjs/graph1ch-1.png" width="960" class="r-stretch"></section>
 <section id="cornhole-results-statistics" class="slide level2">
 <h2>Cornhole Results Statistics</h2>
-<p>Score = -0.5*Trial + 2.6666667</p>
+<p>Score = -0.2378343*Trial + 5.1105951</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -481,23 +481,25 @@ Call:
 lm(formula = Score ~ Trial, data = ch_df)
 
 Residuals:
-      1       2       3 
--0.1667 -0.1667  0.3333 
+    Min      1Q  Median      3Q     Max 
+-3.6349 -2.7066 -0.7566  1.1948 12.1272 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)
-(Intercept)   2.6667     0.6236   4.276    0.146
-Trial        -0.5000     0.2887  -1.732    0.333
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   5.1106     0.9871   5.177 2.11e-05 ***
+Trial        -0.2378     0.1076  -2.211   0.0361 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 0.4082 on 1 degrees of freedom
-Multiple R-squared:   0.75, Adjusted R-squared:    0.5 
-F-statistic:     3 on 1 and 1 DF,  p-value: 0.3333</code></pre>
+Residual standard error: 3.786 on 26 degrees of freedom
+Multiple R-squared:  0.1582,    Adjusted R-squared:  0.1258 
+F-statistic: 4.886 on 1 and 26 DF,  p-value: 0.03607</code></pre>
 </div>
 </div>
 </section>
 <section id="cornhole-results-statistics-1" class="slide level2">
 <h2>Cornhole Results Statistics</h2>
-<p>Score = -0.5*Trial + 2.6666667</p>
+<p>Score = -0.2378343*Trial + 5.1105951</p>
 
 <img data-src="Nog_event06122023_files/figure-revealjs/graph2ch-1.png" width="960" class="r-stretch"></section>
 <section id="conclusion-1" class="slide level2">

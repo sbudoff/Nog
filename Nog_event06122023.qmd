@@ -114,9 +114,9 @@ mirror_df %>%
 
 ```{r stats2, echo=FALSE}
 mirror_df <- mirror_df %>%
-  mutate(Shape.1 = Shape == "Square",
-         Shape.2 = Shape == "Heart",
-         Shape.3 = Shape == "Star")
+  mutate(Shape.1 = Shape == "Brain",
+         Shape.2 = Shape == "Triangle",
+         Shape.3 = Shape == "Heart")
   
 
 mirror_model2 <- lm(`Time (s)` ~ Attempt + Shape.1 + Shape.2 + Shape.3, data = mirror_df) 
